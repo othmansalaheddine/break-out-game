@@ -10,31 +10,79 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const rasImage = document.getElementById('ras');
+// 
+document.addEventListener('DOMContentLoaded', function() {
+    const ball = document.getElementById('ras');
+    const board = document.getElementById('board');
+    let ballX = 0;  // Initial X position
+    let ballY = 0;  // Initial Y position
+    let dx = 2;     // X-axis speed
+    let dy = 2;     // Y-axis speed
 
-        let ballY = 0;// Initial position of the "ras" image
-        let ballX = 0;
-        let verticalVelocity = 0; // Initial vertical velocity
-        const gravity = .2; // Gravity value
+    // Function to move the ball
+    function moveBall() {
+        ballX += dx;
+        ballY += dy;
 
-        function moveBall() {
-            // Apply gravity to the vertical velocity
-            verticalVelocity += gravity;
-
-            // Update the position of the "ras" image
-            ballY += verticalVelocity;
-            rasImage.style.top = ballY + "px";
-            ballX += verticalVelocity;
-            rasImage.style.top = ballX + "px";
-
-            // Check for collisions with the canvas floor
-            if (ballY + rasImage.clientHeight > window.innerHeight) {
-                ballY = window.innerHeight - rasImage.clientHeight;
-                verticalVelocity = -verticalVelocity; // Reverse the vertical direction
-            }
-
-            requestAnimationFrame(moveBall);
+        // Check for collision with the board element
+        if (
+            ballX + ball.clientWidth > board.offsetLeft &&
+            ballX < board.offsetLeft + board.clientWidth &&
+            ballY + ball.clientHeight > board.offsetTop
+        ) {
+            // Reverse the vertical direction
+            dy = -dy;
+        } else if (ballY > window.innerHeight) {
+            // If the ball reaches the bottom without hitting the board, reset its position
+            ballX = 0;
+            ballY = 0;
         }
-        moveBall();
+
+        // Reverse direction if the ball hits the screen boundaries
+        if (ballX < 0 || ballX + ball.clientWidth > window.innerWidth) {
+            dx = -dx;
+        }
+        if (ballY < 0) {
+            dy = -dy;
+        }
+
+        // Update the ball's position
+        ball.style.left = ballX + 'px';
+        ball.style.top = ballY + 'px';
+        
+        // Request animation frame to continue moving the ball
+        requestAnimationFrame(moveBall);
+    }
+
+    // Start moving the ball
+    moveBall();
+});
+
+// const rasImage = document.getElementById('ras');
+
+//         let ballY = 0;// Initial position of the "ras" image
+//         let ballX = 0;
+//         let verticalVelocity = 0; // Initial vertical velocity
+//         const gravity = .01; // Gravity value
+
+//         function moveBall() {
+//             // Apply gravity to the vertical velocity
+//             verticalVelocity += gravity;
+
+//             // Update the position of the "ras" image
+//             ballY += verticalVelocity;
+//             rasImage.style.top = ballY + "px";
+//             ballX += verticalVelocity;
+//             rasImage.style.top = ballX + "px";
+
+//             // Check for collisions with the canvas floor
+//             if (ballY + rasImage.clientHeight > window.innerHeight) {
+//                 ballY = window.innerHeight - rasImage.clientHeight;
+//                 verticalVelocity = -verticalVelocity; // Reverse the vertical direction
+//             }
+
+//             requestAnimationFrame(moveBall);
+//         }
+//         moveBall();
 
         // Call the function to start making the "ras" image fall
