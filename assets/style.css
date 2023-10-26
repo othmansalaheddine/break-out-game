@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+}
+body{
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+#plate{
+    /* background-color: aqua; */
+    background-image: url("/assets/imgs/l7anouta.jpg");
+    /* background-repeat: no-repeat; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#board{
+    display: flex;
+    position: absolute;
+    bottom: 1rem;
+}
+.score{
+    color: white;
+    position: absolute;
+    top: 1rem;
+    right: 14rem;
+    background-color: black;
+}
+.logo{
+    color: white;
+    position: absolute;
+    top: 1rem;
+    left: 8rem;
+    font-size: x-large;
+}
+.rb3alaf{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    gap: 3rem;
+    top: 6rem;
+}
+.alfayn{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    gap: 1.5rem;
+    top: 12rem;
+}
+.alf{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    gap: 1rem;
+    top: 18rem;
+}
+.ras{
+    z-index: 1;
+    position: absolute;
+    bottom: 10rem;
+}
