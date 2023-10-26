@@ -56,7 +56,7 @@ body{
     gap: 1rem;
     top: 18rem;
 }
-.ras{
+#ras{
     z-index: 1;
     position: absolute;
     bottom: 10rem;
