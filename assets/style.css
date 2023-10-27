@@ -40,6 +40,7 @@ body{
     font-size: x-large;
 }
 .rb3alaf{
+    background-color: aqua;
     display: flex;
     justify-content: space-evenly;
     position: absolute;

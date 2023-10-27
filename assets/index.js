@@ -15,12 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const ball = document.getElementById('ras');
     const board = document.getElementById('board');
-    let ballX = 0;  // Initial X position
-    let ballY = 0;  // Initial Y position
+    const floss = document.getElementById('alfayn-1');
+    let ballX = 700;  // Initial X position
+    let ballY = 400;  // Initial Y position
     let dx = 4;     // X-axis speed
     let dy = 4;     // Y-axis speed
 
+    
     // Function to move the ball
+    function displayLostMessage() {
+        const lostMessage = document.getElementById('lost-message');
+        lostMessage.style.display = 'block';
+    }
+
     function moveBall() {
         ballX += dx;
         ballY += dy;
@@ -29,14 +36,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (
             ballX + ball.clientWidth > board.offsetLeft &&
             ballX < board.offsetLeft + board.clientWidth &&
-            ballY + ball.clientHeight > board.offsetTop
+            ballY + ball.clientHeight > board.offsetTop &&
+            ballX + ball.clientWidth > floss.offsetLeft ||
+            ballX < floss.offsetLeft + floss.clientWidth &&
+            ballY + ball.clientHeight > floss.offsetTop
         ) {
             // Reverse the vertical direction
             dy = -dy;
         } else if (ballY > window.innerHeight) {
             // If the ball reaches the bottom without hitting the board, reset its position
-            ballX = 0;
-            ballY = 0;
+            ballX = 700;
+            ballY = 400;
+            displayLostMessage();
+            moveBall.remove();
             
         }
 
@@ -47,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (ballY < 0) {
             dy = -dy;
         }
-
+        
         // Update the ball's position
         ball.style.left = ballX + 'px';
         ball.style.top = ballY + 'px';
@@ -58,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Start moving the ball
     moveBall();
+    document.addEventListener('dblclick', function(){
+        moveBall();
+        lostMessage.remove();
+    })
 });
 
 
