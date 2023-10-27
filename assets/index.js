@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const board = document.getElementById('board');
     let ballX = 0;  // Initial X position
     let ballY = 0;  // Initial Y position
-    let dx = 2;     // X-axis speed
-    let dy = 2;     // Y-axis speed
+    let dx = 4;     // X-axis speed
+    let dy = 4;     // Y-axis speed
 
     // Function to move the ball
     function moveBall() {
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // If the ball reaches the bottom without hitting the board, reset its position
             ballX = 0;
             ballY = 0;
+            
         }
 
         // Reverse direction if the ball hits the screen boundaries
