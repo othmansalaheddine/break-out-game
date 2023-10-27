@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 // 
 document.addEventListener('DOMContentLoaded', function() {
     const ball = document.getElementById('ras');
