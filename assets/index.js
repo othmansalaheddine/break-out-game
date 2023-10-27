@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     moveBall();
 });
 
+
 // const rasImage = document.getElementById('ras');
 
 //         let ballY = 0;// Initial position of the "ras" image
