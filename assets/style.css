@@ -22,11 +22,13 @@ body{
     bottom: 1rem;
 }
 .score{
+    display: flex;
     color: white;
     position: absolute;
     top: 1rem;
     right: 14rem;
     background-color: black;
+    gap: 1rem;
 }
 .logo{
     color: white;
@@ -60,4 +62,7 @@ body{
     z-index: 1;
     position: absolute;
     bottom: 8rem;
+}
+#score{
+    font-size: 150%;
 }
