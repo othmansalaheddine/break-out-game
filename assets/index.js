@@ -1,3 +1,5 @@
+let score = 0;
+const scoreSpan = document.getElementById("score")
 document.addEventListener('DOMContentLoaded', function() {
     const movingImage = document.getElementById('board');
 
@@ -9,31 +11,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // movingImage.style.top = mouseY + 'px';
     });
 });
-const alf = document.getElementById("alf");
-const alfyn = document.getElementById("alfyn");
-const rb3alaf = document.getElementById("rb3alaf");
-const ras= document.getElementById("ras");
-ras.addEventListener("click", function() {
-  alf.remove();
-});
- 
 
+let ballX = 700;  // Initial X position
+let ballY = 400;  // Initial Y position
+let dx = 4;     // X-axis speed
+let dy = 4;     // Y-axis speed
 
 document.addEventListener('DOMContentLoaded', function() {
     const ball = document.getElementById('ras');
     const board = document.getElementById('board');
-    let ballX = 0;  // Initial X position
-    let ballY = 0;  // Initial Y position
-    let dx = 4;     // X-axis speed
-    let dy = 4;     // Y-axis speed
 
     // Function to move the ball
+    const lostMessage = document.getElementById('lost-message');
+    function displayLostMessage() {
+        lostMessage.style.display = 'block';
+     
+    }
+   
+
     function moveBall() {
+      
         ballX += dx;
         ballY += dy;
-
         // Check for collision with the board element
-        if (
+          if (
             ballX + ball.clientWidth > board.offsetLeft &&
             ballX < board.offsetLeft + board.clientWidth &&
             ballY + ball.clientHeight > board.offsetTop
@@ -44,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // If the ball reaches the bottom without hitting the board, reset its position
             ballX = 700 ;
             ballY = 400;
+            displayLostMessage();
+            moveBall.remove();
             
         }
 
@@ -67,6 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Start moving the ball
     moveBall();
+    document.addEventListener('dblclick', function(){
+        moveBall();
+        // lostMessage.remove();
+        lostMessage.style.display = 'none';
+    })
 });
 
 
@@ -91,25 +99,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour vérifier les collisions et supprimer les divs
     function checkCollisions() {
-        rb3alafDivs.forEach(rb3alafDiv => {
-            if (isColliding(ras, rb3alafDiv)) {
-                rb3alafDiv.remove();
-            }
+       
+       if(score === 35000){
+        console.log("rba7ti")
+        moveBall()
+       }else{
+
+           rb3alafDivs.forEach(rb3alafDiv => {
+               if (isColliding(ras, rb3alafDiv)) {
+                   rb3alafDiv.remove();
+                   score = score + 4000
+                   
+                }
         });
 
         alfaynDivs.forEach(alfaynDiv => {
             if (isColliding(ras, alfaynDiv)) {
                 alfaynDiv.remove();
+                score = score + 2000
+                
             }
         });
-
+        
         alfDivs.forEach(alfDiv => {
             if (isColliding(ras, alfDiv)) {
                 alfDiv.remove();
+                
+                score = score + 1000;
             }
         });
+        scoreSpan.textContent = score
     }
+}
+    
 
+   
     // Écouter le clic sur "ras" et vérifier les collisions
     ras.addEventListener("click", function() {
         rb3alafDivs.forEach(rb3alafDiv => {
