@@ -27,7 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
         lostMessage.style.display = 'block';
      
     }
-   
+    const WinMessage = document.getElementById('gameOver-msg');
+    function displayWinMessage() {
+        WinMessage.style.display = 'block';
+     
+    }
+    
 
     function moveBall() {
       
@@ -101,12 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkCollisions() {
        
        if(score === 35000){
-        console.log("rba7ti")
-        moveBall()
+        displayWinMessage()
+        moveBall.remove();
        }else{
 
            rb3alafDivs.forEach(rb3alafDiv => {
                if (isColliding(ras, rb3alafDiv)) {
+                dy = -dy;
                    rb3alafDiv.remove();
                    score = score + 4000
                    
@@ -115,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         alfaynDivs.forEach(alfaynDiv => {
             if (isColliding(ras, alfaynDiv)) {
+                dy = -dy;
                 alfaynDiv.remove();
                 score = score + 2000
                 
@@ -123,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         alfDivs.forEach(alfDiv => {
             if (isColliding(ras, alfDiv)) {
+                dy = -dy;
                 alfDiv.remove();
                 
                 score = score + 1000;
@@ -138,18 +146,22 @@ document.addEventListener('DOMContentLoaded', function() {
     ras.addEventListener("click", function() {
         rb3alafDivs.forEach(rb3alafDiv => {
             if (isColliding(ras, rb3alafDiv)) {
+                dy = -dy;
                 rb3alafDiv.remove();
+
             }
         });
 
         alfaynDivs.forEach(alfaynDiv => {
             if (isColliding(ras, alfaynDiv)) {
+                dy = -dy;
                 alfaynDiv.remove();
             }
         });
 
         alfDivs.forEach(alfDiv => {
             if (isColliding(ras, alfDiv)) {
+                dy = -dy;
                 alfDiv.remove();
             }
         });
