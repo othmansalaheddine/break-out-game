@@ -1,7 +1,7 @@
 *{
     margin: 0;
 }
-body{
+  body{
     background-image: url("/assets/imgs/l7anouta.jpg");
     background-color: brown;
     background-repeat: no-repeat;
@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-}
+}  
 
 #plate{
     /* background-color: aqua; */
@@ -23,6 +23,7 @@ body{
     position: absolute;
     bottom: 1rem;
 }
+
 .score{
     display: flex;
     color: white;
@@ -46,6 +47,7 @@ body{
     position: absolute;
     gap: 3rem;
     top: 6rem;
+    z-index: 1;
 }
 .alfayn{
     display: flex;
@@ -53,6 +55,7 @@ body{
     position: absolute;
     gap: 1.5rem;
     top: 12rem;
+    
 }
 .alf{
     display: flex;
@@ -60,6 +63,7 @@ body{
     position: absolute;
     gap: 1rem;
     top: 18rem;
+    z-index: 1;
 }
 #ras{
     z-index: 1;
