@@ -106,7 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkCollisions() {
        
        if(score === 35000){
-        displayWinMessage()
+        const gameOverMsg =  document.getElementById('gameOver-msg');
+        function displayGameOverMsg() {
+        gameOverMsg.style.display = 'block';
+        }
+        displayGameOverMsg();
         moveBall.remove();
        }else{
 
