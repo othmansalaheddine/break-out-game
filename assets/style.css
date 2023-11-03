@@ -1,8 +1,9 @@
 *{
     margin: 0;
+    
 }
   body{
-    background-image: url("/assets/imgs/l7anouta.jpg");
+    background-image: url("/break-out-game/assets/imgs/l7anouta.jpg") !important;
     background-color: brown;
     background-repeat: no-repeat;
     background-size: 100%;
